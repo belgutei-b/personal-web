@@ -1,0 +1,75 @@
+---
+title: 'Processes and Threads'
+date: '2024-02-14'
+tags: ['COMP3891', 'OS']
+publish: true
+---
+Computers only understand low level programs - zeros and ones (binary code).
+The code gets translated into binary machine code.
+
+- To compile a program, it needs some resources of the computer system. Who allocates this recourse? OS
+
+### Process: program in execution
+Early computers can only execute one process at the time. Modern computers can run multiple process.
+- Also called a task or job
+- encompass one or more thread
+
+### Threads: Unit of execution within a process
+A process can have just one thread to many threads.
+- thread: unit of execution
+- can be traced by listing all the instruction that executed
+- belongs to a **process**
+
+### Process termination
+1. Normal exit (voluntary) - process finished
+2. Error exit (voluntary) - exit with error code (called by a programmer who wrote the code)
+3. Fatal error (involuntary) - e.g-> divided by 0
+4. Killed by another process (involuntary)
+
+### Implementation of Processes
+- Process Control Block (PCB) - where the processes' information stored
+- PCBs form a process table
+
+- Program counter - instruction pointer (address of the instruction that is being executed now)
+
+### Process /Thread States
+Process states
+1. Running
+	1. interrupted by timer (OS need to switch to different process)
+	2. running -> ready state or Blocked
+2. Ready
+3. Blocked: lacks some necessary resource
+	1. can not currently make progress
+	2. (Not ready)
+	3. OS make a progress by calling different progress that can make a progress
+
+### Scheduler
+- The ready queue
+	- add the ready threads in to ready queue
+- OS gives an illusion that all the threads in the ready queue running simultaneously
+- The Blocked Queue
+	- all the blocked processes added
+	- we can have multiple blocked queues each corresponds to specific resources
+		- network
+		- disk
+		- serial
+	- 
+- what if the process lacks multiple resources, how does os know which queue to chose?
+### Single threaded-process vs multiple threaded-process
+- Single threaded-process might sit in idle state
+- multiple threaded process instead of sitting in idle state, transit into the next thread
+
+- each thread has its own stack
+
+### Thread Model
+- Local variables
+	- Allocated on the stack
+- Global variables are shared between all threads
+	- Allocated in data section
+- Dynamically allocated memory (malloc)
+	- could global or local
+	- program defined
+
+### Why threads
+- Less resources than multiple complete processes
+- Threads can take advantage of the parallelism available on the machines with multiple CPUs

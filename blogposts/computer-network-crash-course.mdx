@@ -1,0 +1,53 @@
+---
+title: 'Computer Networks Crash Course'
+date: '2024-02-17'
+tags: ['COMP3331', 'computer-networks']
+publish: true
+---
+
+```java
+class Node {
+    int val; //Value of the node
+    Node left, right;  //Child nodes
+
+    //Constructor
+    public Node(int value) {
+        val = value;
+        left = right = null;
+    }
+}
+```
+
+# heading 1
+
+[Youtube link](https://www.youtube.com/watch?v=3QhU9jd03a0&ab_channel=CrashCourse
+)
+LAN: Local area networks
+Initially, in 50s and 60s, organizations started using networks to transfer data.
+Lan could be only 2 computers or an university campus with thousands of computers.
+The most famous and successful LAN technology: ethernet.
+- developed in 1970s
+- Computers are connected to single common ethernet cable
+	- computer writes data as an electrical signal
+- Since the cable is shared, every computer can access the data.
+	- the computer couldn't know whether the data is intended for them.
+- Ethernet requires each computer to have a Media Access Control Address (MAC address)
+- the computer process the data only when the header contains their MAC address
+- Bandwidth: the rate of transmitting the data
+- the cable can not transmit multiple electrical signal at the same time
+	- so, when the cable is used, the computer waits for a brief time to check if the cable is used
+	- wait duration is random to prevent collisions
+
+
+
+# Switch
+To prevent collision, we can reduce the number of computers that connected to single common ethernet cable. For example, instead of 6 computers connected to the same cable, 3 connected to the same and another 3 connected to the same cable. These two cable connected by switch.
+# Routing
+By using multiple switches, we can transmit data from one computer to another by multiple ways.
+# circuit switching
+	to connect two computers, they wait the whole circuit to route traffic to correct destination
+	This method is expensive and unefficient as there is often unused capacity.
+	Banks and military still buys circuits as they don't have to share with others.
+# Message switching
+When data is transmitted, it passes through multiple stops.
+	hop count: 
