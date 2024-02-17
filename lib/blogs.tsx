@@ -22,10 +22,8 @@ export async function getPostByName(
     options: {
       parseFrontmatter: true,
       mdxOptions: {
-        rehypePlugins: [
-          rehypeHighlight
-        ]
-      }
+        rehypePlugins: [rehypeHighlight],
+      },
     },
   });
   const id = fileName.replace(/\.mdx$/, "");
@@ -50,6 +48,21 @@ export async function getBlogsMeta(): Promise<Meta[]> {
     fileNames.map(async (fileName) => {
       const post = await getPostByName(fileName);
       if (post && post.meta.publish) {
+        const { meta } = post;
+        posts.push(meta);
+      }
+    })
+  );
+  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export async function getBlogsTag(tag: string): Promise<Meta[]> {
+  const fileNames = fs.readdirSync(postsDirectory);
+  const posts: Meta[] = [];
+  await Promise.all(
+    fileNames.map(async (fileName) => {
+      const post = await getPostByName(fileName);
+      if (post && post.meta.publish && post.meta.tags.includes(tag)) {
         const { meta } = post;
         posts.push(meta);
       }
