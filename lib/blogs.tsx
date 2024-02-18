@@ -3,6 +3,8 @@ import fs from "fs"; // file system
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeHighlight from "rehype-highlight";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
 
 // process.cwd -> current working directory
 const postsDirectory = path.join(process.cwd(), "blogposts");
@@ -16,13 +18,24 @@ export async function getPostByName(
     title: string;
     date: string;
     tags: string[];
+    course: string | undefined;
+    week: number | undefined;
     publish: boolean;
   }>({
     source: fileContents,
     options: {
       parseFrontmatter: true,
       mdxOptions: {
-        rehypePlugins: [rehypeHighlight],
+        rehypePlugins: [
+          rehypeHighlight,
+          rehypeSlug,
+          [
+            rehypeAutolinkHeadings,
+            {
+              behavior: "wrap",
+            },
+          ],
+        ],
       },
     },
   });
@@ -33,6 +46,8 @@ export async function getPostByName(
       title: frontmatter.title,
       date: frontmatter.date,
       tags: frontmatter.tags,
+      course: frontmatter.course,
+      week: frontmatter.week,
       publish: frontmatter.publish,
     },
     content,

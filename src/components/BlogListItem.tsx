@@ -9,7 +9,7 @@ export default function BlogListItem({ blog }: Props) {
   const { id, title, date, tags } = blog;
   const formattedDate = getFormattedDate(date);
   return (
-    <li className="my-6">
+    <li className="my-6" key={blog.id}>
       <div className="flex md:flex-row flex-col">
         <div className="text-base font-medium leading-6 text-gray-400 md:mr-8 lg:mr-12">
           {formattedDate}

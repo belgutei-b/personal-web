@@ -5,25 +5,25 @@ import Link from "next/link";
 
 const links = [
   {
-    url: '/',
-    name: '~/Belgutei'
+    url: "/",
+    name: "~/Belgutei",
   },
   {
-    url: '/projects',
-    name: '~/Projects'
+    url: "/projects",
+    name: "~/Projects",
   },
   {
-    url: '/photos',
-    name: '~/Photos'
+    url: "/photos",
+    name: "~/Photos",
   },
   {
-    url: '/blogs',
-    name: '~/Blogs'
+    url: "/blogs",
+    name: "~/Blogs",
   },
   {
-    url: '/courses',
-    name: '~/Courses'
-  }
+    url: "/courses",
+    name: "~/Courses",
+  },
 ];
 
 export default function Navbar() {
@@ -31,7 +31,9 @@ export default function Navbar() {
 
   const listItems = links.map((link) => (
     <li key={link.name} className="inline-block mr-12">
-      <Link href={link.url} className="hover:text-blue-600">{link.name}</Link>
+      <Link href={link.url} className="hover:text-blue-600">
+        {link.name}
+      </Link>
     </li>
   ));
   return (
@@ -41,6 +43,5 @@ export default function Navbar() {
         {session ? <button onClick={() => signOut()}>Logout</button> : <></>}
       </ul>
     </div>
-    
-  )
+  );
 }

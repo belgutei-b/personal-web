@@ -1,8 +1,9 @@
 import { getPostByName } from "../../../../lib/blogs";
 import { notFound } from "next/navigation";
 import getFormattedDate from "../../../../lib/getFormattedDate";
-import Link from "next/link";
-import 'highlight.js/styles/github-dark.css';
+import "highlight.js/styles/github-dark.css";
+import { rehype } from "rehype";
+import rehypeSlug from "rehype-slug";
 
 export default async function Page({ params }: { params: { blogId: string } }) {
   const post = await getPostByName(params.blogId + ".mdx");
