@@ -1,5 +1,5 @@
 import BlogListItem from "@/components/BlogListItem";
-import { getBlogsMeta } from "../../../lib/blogs";
+import { getBlogsMeta } from "@/lib/blogs";
 import BlogTagUpper from "@/components/BlogTagUpper";
 
 export default async function Blogs() {

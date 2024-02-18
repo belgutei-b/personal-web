@@ -1,6 +1,6 @@
-import { getPostByName } from "../../../../lib/blogs";
+import { getPostByName } from "@/lib/blogs";
 import { notFound } from "next/navigation";
-import getFormattedDate from "../../../../lib/getFormattedDate";
+import getFormattedDate from "@/lib/getFormattedDate";
 import "highlight.js/styles/github-dark.css";
 import { rehype } from "rehype";
 import rehypeSlug from "rehype-slug";

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import getFormattedDate from "../../lib/getFormattedDate";
+import getFormattedDate from "@/lib/getFormattedDate";
 
 type Props = {
   blog: Meta;

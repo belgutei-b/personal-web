@@ -71,7 +71,7 @@ export async function getBlogsMeta(): Promise<Meta[]> {
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export async function getBlogsTag(tag: string): Promise<Meta[]> {
+export async function getBlogsByTag(tag: string): Promise<Meta[]> {
   const fileNames = fs.readdirSync(postsDirectory);
   const posts: Meta[] = [];
   await Promise.all(

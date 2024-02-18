@@ -1,9 +1,9 @@
 import BlogTagUpper from "@/components/BlogTagUpper";
-import { getBlogsTag } from "../../../../lib/blogs";
+import { getBlogsByTag } from "@/lib/blogs";
 import BlogListItem from "@/components/BlogListItem";
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const blogs = await getBlogsTag(params.slug);
+  const blogs = await getBlogsByTag(params.slug);
   return (
     <div>
       <BlogTagUpper text={params.slug} />
