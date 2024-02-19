@@ -2,8 +2,6 @@ import { getPostByName } from "@/lib/blogs";
 import { notFound, redirect } from "next/navigation";
 import getFormattedDate from "@/lib/getFormattedDate";
 import "highlight.js/styles/github-dark.css";
-import { rehype } from "rehype";
-import rehypeSlug from "rehype-slug";
 import type { Metadata } from "next";
 
 export async function generateMetadata({
@@ -31,7 +29,7 @@ export default async function Page({ params }: { params: { blogId: string } }) {
           <hr className="my-6" />
         </div>
 
-        <div className="prose prose-Stone text-gray-300 leading-6">
+        <div className="prose prose-Stone text-gray-200 leading-6">
           {post.content}
         </div>
       </div>

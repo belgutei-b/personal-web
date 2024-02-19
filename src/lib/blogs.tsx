@@ -5,6 +5,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeHighlight from "rehype-highlight";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
+import CustomImage from "@/components/CustomImage";
 
 // process.cwd -> current working directory
 const postsDirectory = path.join(process.cwd(), "blogposts");
@@ -24,6 +25,9 @@ export async function getPostByName(
       publish: boolean;
     }>({
       source: fileContents,
+      components: {
+        CustomImage,
+      },
       options: {
         parseFrontmatter: true,
         mdxOptions: {

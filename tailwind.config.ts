@@ -24,7 +24,7 @@ const config: Config = {
       typography: (theme: any) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.gray.800"),
+            // color: theme("colors.gray.800"),
             h1: {
               color: theme("colors.gray.50"),
               letterSpacing: theme('letterSpacing.tight'),
@@ -42,6 +42,12 @@ const config: Config = {
             },
             p: {
               letterSpacing: theme('letterSpacing.tight'),
+            },
+            blockquote: {
+              color: theme("colors.gray.100")
+            },
+            code: {
+              color: theme("colors.gray.300")
             }
           },
         },
