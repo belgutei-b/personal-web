@@ -1,12 +1,24 @@
 import { getPostByName } from "@/lib/blogs";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import getFormattedDate from "@/lib/getFormattedDate";
 import "highlight.js/styles/github-dark.css";
 import { rehype } from "rehype";
 import rehypeSlug from "rehype-slug";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { blogId: string };
+}): Promise<Metadata> {
+  return {
+    title: params.blogId,
+  };
+}
 
 export default async function Page({ params }: { params: { blogId: string } }) {
   const post = await getPostByName(params.blogId + ".mdx");
+  // TODO: if the post is undefined, redirect to not-found page
   const formattedDate = getFormattedDate(post!.meta.date);
   if (post) {
     return (

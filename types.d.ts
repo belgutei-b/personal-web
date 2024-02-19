@@ -3,7 +3,7 @@ type Meta = {
   title: string;
   date: string;
   tags: string[];
-  course: string | undefined;
+  courseId: string | undefined;
   week: number | undefined;
   publish: boolean;
 };

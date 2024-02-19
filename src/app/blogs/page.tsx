@@ -1,6 +1,12 @@
 import BlogListItem from "@/components/BlogListItem";
 import { getBlogsMeta } from "@/lib/blogs";
 import BlogTagUpper from "@/components/BlogTagUpper";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blogs",
+  description: "blogs",
+};
 
 export default async function Blogs() {
   const blogs = await getBlogsMeta();

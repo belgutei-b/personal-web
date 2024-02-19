@@ -1,0 +1,53 @@
+---
+title: 'Concurrency and Synchronisation'
+date: '2024-02-14'
+tags: ['OS', 'UNSW']
+courseId: 'COMP3891'
+week: 1
+publish: true
+---
+import CustomImage from "@/components/CustomImage";
+
+```c
+// count is global variable
+void increment() {
+	int t;
+	t = count;
+	t = t + 1;
+	count = t;
+}
+void decrement() {
+	int t;
+	t = count;
+	t = t - 1;
+	count = t;
+}
+```
+
+> count is a global variable that is shared between two threads, t is a local variable.
+> After calling the increment and decrement functions, the value of count could be one of `{-1, 0, 1}`. The value of count varies based on where the timer changed the processes.
+
+
+# Critical Region
+- Critical region: area of code where the shared resources are accessed.
+- Uncoordinated entry to the critical region causes a race condition.
+
+# Accessing Critical Region
+{/* <CustomImage src="/public/access-critical-regions.png" alt="accessing critical regions" /> */}
+![[Pasted image 20240219115149.png]]
+
+# Critical Regions Solutions
+Conditions required of any solution to the critical region problem.
+1. Mutual Exclusion
+	- no two processes simultaneously in critical region
+2. No assumptions about speed or number of CPUs
+3. Progress
+	1. the process running outside its critical region doesn't block other processes.
+4. Bounded
+	1. Processes doesn't wait forever to enter its critical region
+
+### Solution #1
+- A lock variable
+	- if ```lock === 1```, some other thread is in the critical region and we must wait
+	- if ```lock === 0```, no process is in the critical region and the thread can enter
+
