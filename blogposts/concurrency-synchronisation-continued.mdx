@@ -1,0 +1,95 @@
+---
+title: 'Concurrency and Synchronisation continued'
+date: '2024-02-19'
+tags: ['OS', 'UNSW']
+courseId: 'COMP3891'
+week: 2
+publish: true
+---
+# Concurrency and Synchronisation (Continued)
+
+# Mutual Exclusion by Taking Turns
+
+```C
+// thread - i
+// enters the critical region if the turn is only 0
+while (TRUE) {
+	while (turn != 0) /* loop */
+	critical_region();
+	turn = 1;
+	noncritical_region();
+}
+
+// thread - ii
+while (TRUE) {
+	while (turn != 1) /* loop */
+	critical_region();
+	turn = 0;
+	noncritical_region();
+}
+```
+
+Pros:
+- works due to strict alternation
+- each process takes its turn
+Limitations:
+- Busy waiting
+- process must wait its turn while the other process is doing something else
+- it waits its turn in a while-loop (basically wasting CPU)
+	- Doesn't guarantee progress if a process no longer takes a turn
+- Poor solution when the processes the critical solution in differing rates:
+	- one process requires the critical section in every one hour
+	- the other process requires the critical solution in every second
+
+# Mutual Exclusion by Disabling Interrupts
+Pros
+- simple
+Cons
+- only available in the kernel / not available in user mode
+	- not available to user applications
+	- if it is available, the user application would get full control of the computer
+- works best for the short critical region codes (doesn't take much time to run)
+- does not work on a multiprocessor
+
+
+# Hardware Support for mutual exclusion
+In low level programming, there is no interrupting the instructions.
+
+# Test and Set
+- observing the lock is free and lock in one instruction
+
+Pros
+- simple
+- available at user level (3 or 4 instructions)
+	- to any number of processors
+	- to implement any number of lock variables
+Cons
+- busy waits (sits in the loop / burning CPU => termed as a *spin lock*)
+	- consumes CPU
+	- Starvation is possible (the scheduler chooses which one to choose next) when more than one process is waiting.
+	- two processes
+		- one enters critical section
+		- scheduler changes to second process
+		- second one doesn't enter critical section as it is used by the 1st process
+		- scheduler changes to first process.
+			- first one finish and re-enter the critical section
+		- etc, the second process never enters critical section
+
+# Tackling the Busy-Wait problem
+- Sleep / Wakeup
+
+# The Producer-Consumer Problem 
+
+# Semaphores
+
+# Semaphore Implementation
+```C
+typedef struct {
+	int count;
+	struct process *L; // list of process that is blocked by this semaphore
+}
+```
+Two operations
+1. sleep
+2. wakeup
+

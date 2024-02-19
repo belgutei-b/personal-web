@@ -1,3 +1,4 @@
+import BlogTitleTags from "@/components/BlogTItleTags";
 import { getBlogsMeta } from "@/lib/blogs";
 
 export default async function Page({
@@ -7,21 +8,26 @@ export default async function Page({
 }) {
   const allBlogsMeta = await getBlogsMeta();
   const blogsWeekMeta: Meta[][] = [];
-  for (let i = 1; i <= 10; i++) {
+  const allWeeks = [];
+  for (let i = 10; i >= 1; i--) {
     blogsWeekMeta[i] = allBlogsMeta.filter(
       (blog) => blog.week === i && blog.courseId === params.courseId
     );
+    if (blogsWeekMeta[i].length > 0) {
+      allWeeks.push(
+        <div className="w-full flex flex-col">
+          <div className="pr-8">
+            <p className="text-pink-500 text-3xl font-semibold">week-{i}</p>
+          </div>
+          <hr className="my-3" />
+          <div>
+            {blogsWeekMeta[i].map((blog) => (
+              <BlogTitleTags blog={blog} />
+            ))}
+          </div>
+        </div>
+      );
+    }
   }
-  return (
-    <div className="flex w-full mb-10">
-      <div className="border-r pr-8 ">
-        <p className="text-pink-500 text-right text-2xl font-semibold">
-          week-1
-        </p>
-      </div>
-      <div className="pl-8">
-        <div className="mb-4"></div>
-      </div>
-    </div>
-  );
+  return <div className="flex flex-col w-full mt-10">{allWeeks}</div>;
 }

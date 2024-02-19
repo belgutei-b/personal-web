@@ -13,7 +13,7 @@ export default async function Blogs() {
   return (
     <div>
       <BlogTagUpper text={"All blogs"} />
-      <ul>
+      <ul className="mt-6">
         {blogs.map((blog) => (
           <BlogListItem key={blog.id} blog={blog} />
         ))}

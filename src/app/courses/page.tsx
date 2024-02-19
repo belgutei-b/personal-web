@@ -78,8 +78,8 @@ const terms = [
 ];
 
 export default function Courses() {
-  const listItems = terms.map((term) => (
-    <li key={term.id} className="flex w-full mb-10">
+  const termsDiv = terms.map((term) => (
+    <div key={term.id} className="flex mb-10 flex-1">
       <div className="border-r pr-8 ">
         <p className="text-pink-500 text-right text-2xl font-semibold">
           {term.term}
@@ -97,16 +97,12 @@ export default function Courses() {
           </div>
         ))}
       </div>
-    </li>
+    </div>
   ));
 
   return (
     <div className="flex">
-      <div className="w-2/12"></div>
-      <div className="flex mt-10">
-        <ul className="w-full">{listItems}</ul>
-      </div>
-      <div className="w-2/12"></div>
+      <div className="flex flex-col mt-10 mx-auto">{termsDiv}</div>
     </div>
   );
 }
