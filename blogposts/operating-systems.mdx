@@ -1,0 +1,50 @@
+---
+title: 'Operating Systems Basic'
+date: '2024-02-12'
+tags: ['OS', 'UNSW']
+courseId: 'COMP3891'
+week: 1
+publish: true
+---
+
+# Two main roles of OS
+1. OS is an abstract machine
+	- provides high-level abstractions
+	- extends basic hardware with added functionality
+	- it hides an details of the hardware
+		- make application code portable
+		- don't have to write code for specific hardware structure
+2. OS is a **resource manager**
+	- allocating resources to users and processes
+	- must ensure
+		- no starvation
+		- progress
+		- allocate via some desired policy
+		- overall, the system is efficiently used
+
+# Operating System Kernel
+- Part of the OS that runs in *privileged mode*
+- contains fundamental functionality
+- contains mode-frequently used functions
+
+# OS is privileged
+- prevent applications from interfering with each other
+- OS can enforce its resource allocation
+
+# Privilege-less OS
+- Some embedded OS have no privileged mode
+	- it can implement OS functionality, but cannot enforce it
+		- All software runs together
+		- No isolation
+		- one fault might brings down entire system
+
+# System Libraries
+- System libraries are just libraries of support functions
+- Subset of Library functions are actually system calls
+	- strcmp(), memcpy() are pure library functions
+		- manipulating memory within application
+	- open(), close(), read(), write() are system calls
+		- crossing the user-kernel boundary (to read from disk)
+		- implementation mainly focused on passing request to OS and returning result to application
+		- ```man syscalls```
+		- 

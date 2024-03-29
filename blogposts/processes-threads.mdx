@@ -6,17 +6,15 @@ courseId: 'COMP3891'
 week: 1
 publish: true
 ---
-Computers only understand low level programs - zeros and ones (binary code).
-The code gets translated into binary machine code.
-
-- To compile a program, it needs some resources of the computer system. OS allocates resources to the program.
 
 ### Process: program in execution
+
 Early computers can only execute one process at the time. Modern computers can run multiple process.
 - Also called a task or job
 - encompass one or more thread
 
 ### Threads: Unit of execution within a process
+
 A process can have just one thread to many threads.
 - can be traced by listing all the instruction that executed
 - belongs to a **process**
@@ -29,11 +27,13 @@ A process can have just one thread to many threads.
 4. Killed by another process (involuntary)
 
 ### Implementation of Processes
+
 - **Process Control Block** (PCB) - where the processes' information stored
 - PCBs form a process table
 - Program counter - instruction pointer (address of the instruction that is being executed now)
 
 ### Process /Thread States
+
 1. **Running**
 	1. interrupted by timer (OS need to switch to different process)
 	2. State transition: Running -> Ready or Blocked
@@ -45,6 +45,7 @@ A process can have just one thread to many threads.
 	3. OS make a progress by calling different progress that can make a progress
 
 ### Scheduler
+
 - The ready queue
 	- adds the ready threads in to the ready queue
 - OS gives an illusion that all the threads in the ready queue running simultaneously
@@ -55,11 +56,13 @@ A process can have just one thread to many threads.
 		- disk
 		- serial
 ### Single threaded-process vs multiple threaded-process
+
 - Single threaded-process might sit in idle state
 - multiple threaded process instead of sitting in idle state, transit into the next thread
 - each thread has its own stack
 
 ### Thread Model
+
 - Local variables
 	- Allocated on the stack
 - Global variables are shared between all threads
@@ -69,5 +72,6 @@ A process can have just one thread to many threads.
 	- program defined
 
 ### Why threads
+
 - Less resources than multiple complete processes
 - Threads can take advantage of the parallelism available on the machines with multiple CPUs
