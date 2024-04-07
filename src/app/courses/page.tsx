@@ -80,20 +80,24 @@ const terms = [
 export default function Courses() {
   const termsDiv = terms.map((term) => (
     <div key={term.id} className="flex mb-10 flex-1">
-      <div className="border-r pr-8 ">
-        <p className="text-pink-500 text-right text-2xl font-semibold">
+      <div className="border-r pr-8">
+        <p className="text-pink-500 text-right text-2xl font-semibold hover:cursor-default">
           {term.term}
         </p>
       </div>
       <div className="pl-8">
         {term.courses.map((course) => (
           <div className="mb-4" key={course.code}>
-            <Link href={`/courses/${course.code}`} className="flex">
+            <div className="flex flex-row hover:cursor-default">
+              {/* <Link href={`/courses/${course.code}`} className="flex"> */}
               <p className="text-custom-green mr-1 font-semibold">
                 {course.code}:
               </p>
-              <p className="text-white hover:text-orange-200">{course.name}</p>
-            </Link>
+              <p className="text-white tracking-tight hover:text-orange-200">
+                {course.name}
+              </p>
+              {/* </Link> */}
+            </div>
           </div>
         ))}
       </div>

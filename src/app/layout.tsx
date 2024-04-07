@@ -22,7 +22,11 @@ export default async function RootLayout({
           <div className="w-1/12"></div>
           <div className="font-mono flex-1">
             <Navbar />
-            {children}
+            <div className="flex flex-row">
+              <div className="w-1/12"></div>
+              <div className="flex-auto">{children}</div>
+              <div className="w-1/12"></div>
+            </div>
           </div>
           <div className="w-1/12"></div>
         </div>

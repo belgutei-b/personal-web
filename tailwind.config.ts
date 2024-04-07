@@ -16,10 +16,10 @@ const config: Config = {
       },
       colors: {
         "custom-pink": "#D741E6",
-        "custom-blue": "#35F9ED",
-        "custom-blue-hovered": "#2ac7be",
-        "custom-green": "#49F191",
+        "custom-green": "#42d983",
+        "custom-green-h": "#49F191",
         sky: colors.sky,
+        fuchsia: colors.fuchsia,
       },
       typography: (theme: any) => ({
         DEFAULT: {
