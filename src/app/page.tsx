@@ -48,9 +48,9 @@ export default function Home() {
       <CustomParticles />
       <div className="mb-12 tracking-tighter leading-relaxed hover:cursor-default">
         <div className="flex font-medium text-2xl mb-4">
-          <p>printf("</p>
+          <p>printf(&quot;</p>
           <p className="text-pink-500">Hello World!</p>
-          <p>"). I'm</p>
+          <p>&quot;). I&apos;m</p>
         </div>
         <div className="text-5xl font-semibold flex flex-row title-spacing">
           <p className="text-6xl title-spacing">Belgutei Byambadorj</p>
