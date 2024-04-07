@@ -1,10 +1,5 @@
-import Link from "next/link";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Courses",
-  description: "courses",
-};
+"use client";
+import CustomParticles from "@/components/CustomParticles";
 
 const terms = [
   {
@@ -106,6 +101,7 @@ export default function Courses() {
 
   return (
     <div className="flex">
+      <CustomParticles />
       <div className="flex flex-col mt-10 mx-auto">{termsDiv}</div>
     </div>
   );

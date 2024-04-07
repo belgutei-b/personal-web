@@ -1,8 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { type Container, type ISourceOptions } from "@tsparticles/engine";
-import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
+import CustomParticles from "@/components/CustomParticles";
 
 const texts = [
   {
@@ -47,101 +44,9 @@ const listItems = texts.map((text) => (
 ));
 
 export default function Home() {
-  const [init, setInit] = useState(false);
-
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
-
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
-
-  const options: ISourceOptions = useMemo(
-    () => ({
-      fpsLimit: 120,
-      interactivity: {
-        events: {
-          onClick: {
-            enable: true,
-            mode: "push",
-          },
-          onHover: {
-            enable: true,
-            mode: "repulse",
-          },
-        },
-        modes: {
-          push: {
-            quantity: 2,
-          },
-          repulse: {
-            distance: 100,
-            duration: 0.4,
-          },
-        },
-      },
-      particles: {
-        color: {
-          value: "#ffffff",
-        },
-        links: {
-          color: "#ffffff",
-          distance: 150,
-          enable: true,
-          opacity: 0.5,
-          width: 1,
-        },
-        collisions: {
-          enable: true,
-        },
-        move: {
-          direction: "none",
-          enable: true,
-          outModes: {
-            default: "bounce",
-          },
-          random: false,
-          speed: 3,
-          straight: false,
-        },
-        number: {
-          density: {
-            enable: true,
-            area: 800,
-          },
-          value: 60,
-        },
-        opacity: {
-          value: 0.5,
-        },
-        shape: {
-          type: "circle",
-        },
-        size: {
-          value: { min: 1, max: 3 },
-        },
-      },
-      detectRetina: true,
-    }),
-    []
-  );
-
   return (
     <div className="mt-14">
-      {init && (
-        <Particles
-          id="tsparticles"
-          particlesLoaded={particlesLoaded}
-          options={options}
-        />
-      )}
-
-      {/* <div style={{position: "absolute", width:"100%", left: "0", height: "80vh"}}></div> */}
+      <CustomParticles />
       <div className="mb-12 tracking-tighter max-w-prose block leading-relaxed hover:cursor-default">
         <div className="flex font-medium text-2xl mb-4">
           <p>printf("</p>
