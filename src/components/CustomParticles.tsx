@@ -1,3 +1,4 @@
+"use client";
 import { type Container, type ISourceOptions } from "@tsparticles/engine";
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
@@ -40,10 +41,10 @@ export default function CustomParticles() {
       },
       particles: {
         color: {
-          value: "#ffffff",
+          value: "#808080",
         },
         links: {
-          color: "#ffffff",
+          color: "#808080",
           distance: 150,
           enable: true,
           opacity: 0.5,
@@ -67,7 +68,7 @@ export default function CustomParticles() {
             enable: true,
             area: 800,
           },
-          value: 60,
+          value: 120,
         },
         opacity: {
           value: 0.5,

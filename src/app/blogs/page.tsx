@@ -1,19 +1,16 @@
+"use server";
 import BlogListItem from "@/components/BlogListItem";
 import { getBlogsMeta } from "@/lib/blogs";
 import BlogTagUpper from "@/components/BlogTagUpper";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Blogs",
-  description: "blogs",
-};
+import CustomParticles from "@/components/CustomParticles";
 
 export default async function Blogs() {
   const blogs = await getBlogsMeta();
   return (
     <div>
+      <CustomParticles />
       <BlogTagUpper text={"All blogs"} />
-      <ul className="mt-6">
+      <ul>
         {blogs.map((blog) => (
           <BlogListItem key={blog.id} blog={blog} />
         ))}

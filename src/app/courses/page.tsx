@@ -1,4 +1,3 @@
-"use client";
 import CustomParticles from "@/components/CustomParticles";
 
 const terms = [
@@ -84,14 +83,12 @@ export default function Courses() {
         {term.courses.map((course) => (
           <div className="mb-4" key={course.code}>
             <div className="flex flex-row hover:cursor-default">
-              {/* <Link href={`/courses/${course.code}`} className="flex"> */}
               <p className="text-custom-green mr-1 font-semibold">
                 {course.code}:
               </p>
               <p className="text-white tracking-tight hover:text-orange-200">
                 {course.name}
               </p>
-              {/* </Link> */}
             </div>
           </div>
         ))}

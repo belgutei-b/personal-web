@@ -28,7 +28,6 @@ export default async function Page({ params }: { params: { blogId: string } }) {
           <p className="text-5xl">{post.meta.title}</p>
           <hr className="my-6" />
         </div>
-
         <div className="prose prose-Stone text-gray-200 leading-6">
           {post.content}
         </div>

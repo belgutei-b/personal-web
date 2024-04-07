@@ -25,3 +25,11 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.title-spacing {
+  word-spacing: -0.15em;
+}
+
+.text-spacing {
+  word-spacing: -0.18em;
+}

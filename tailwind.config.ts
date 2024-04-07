@@ -16,8 +16,8 @@ const config: Config = {
       },
       colors: {
         "custom-pink": "#D741E6",
-        "custom-green": "#42d983",
-        "custom-green-h": "#49F191",
+        "custom-green": "#49F191",
+        "custom-green-h": "#80f5b2",
         sky: colors.sky,
         fuchsia: colors.fuchsia,
       },
@@ -27,28 +27,28 @@ const config: Config = {
             // color: theme("colors.gray.800"),
             h1: {
               color: theme("colors.gray.50"),
-              letterSpacing: theme('letterSpacing.tight'),
+              letterSpacing: theme("letterSpacing.tight"),
             },
             h2: {
               color: theme("colors.gray.50"),
-              letterSpacing: theme('letterSpacing.tight'),
+              letterSpacing: theme("letterSpacing.tight"),
             },
             h3: {
               color: theme("colors.gray.50"),
-              letterSpacing: theme('letterSpacing.tight'),
+              letterSpacing: theme("letterSpacing.tight"),
             },
             a: {
               color: "#49F191",
             },
             p: {
-              letterSpacing: theme('letterSpacing.tight'),
+              letterSpacing: theme("letterSpacing.tight"),
             },
             blockquote: {
-              color: theme("colors.gray.100")
+              color: theme("colors.gray.100"),
             },
             code: {
-              color: theme("colors.gray.300")
-            }
+              color: theme("colors.gray.300"),
+            },
           },
         },
       }),

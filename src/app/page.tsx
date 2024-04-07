@@ -1,4 +1,3 @@
-"use client";
 import CustomParticles from "@/components/CustomParticles";
 
 const texts = [
@@ -31,12 +30,12 @@ const texts = [
 const listItems = texts.map((text) => (
   <div
     key={text.id}
-    className="relative mt-2 text-base w-10/12 rounded-2xl mb-4 group hover:cursor-default"
+    className="relative mt-5 text-base w-10/12 rounded-2xl mb-4 group hover:cursor-default"
   >
     <p className="text-lg text-custom-green group-hover:text-custom-green-h font-medium uppercase">
       {text.title}
     </p>
-    <p className="tracking-tight text-slate-400 group-hover:text-gray-50 transition">
+    <p className="tracking-tight text-slate-300 group-hover:text-white transition text-spacing">
       {text.desription}
     </p>
     <span className="absolute w-px -inset-y-3 left-[-1rem] bg-gradient-to-b from-black via-custom-green to-black opacity-0 group-hover:opacity-100 transition"></span>
@@ -47,16 +46,15 @@ export default function Home() {
   return (
     <div className="mt-14">
       <CustomParticles />
-      <div className="mb-12 tracking-tighter max-w-prose block leading-relaxed hover:cursor-default">
+      <div className="mb-12 tracking-tighter leading-relaxed hover:cursor-default">
         <div className="flex font-medium text-2xl mb-4">
           <p>printf("</p>
           <p className="text-pink-500">Hello World!</p>
           <p>"). I'm</p>
         </div>
-        <div className="text-5xl font-semibold">
-          <p className="inline-block">Belgutei Byambadorj</p>
-          {/* <p className="inline-block text-pink-500">.</p> */}
-          <span className="text-accent text-pink-500">.</span>
+        <div className="text-5xl font-semibold flex flex-row title-spacing">
+          <p className="text-6xl title-spacing">Belgutei Byambadorj</p>
+          <p className="text-accent text-pink-500">.</p>
         </div>
       </div>
       <ul>{listItems}</ul>
