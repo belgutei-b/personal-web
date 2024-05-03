@@ -2,6 +2,24 @@ import CustomParticles from "@/components/CustomParticles";
 
 const terms = [
   {
+    id: 4,
+    term: "T2 2024",
+    courses: [
+      {
+        code: "COMP9417",
+        name: "Machine Learning and Data Mining",
+      },
+      {
+        code: "COMP9517",
+        name: "Computer Vision",
+      },
+      {
+        code: "COMP3141",
+        name: "Software System Design and Implementation",
+      },
+    ],
+  },
+  {
     id: 3,
     term: "T1 2024",
     courses: [

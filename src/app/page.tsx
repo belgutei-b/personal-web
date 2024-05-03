@@ -5,7 +5,7 @@ const texts = [
     id: 0,
     title: "About me",
     desription:
-      "I love programming, especially Competitive Programming, Networking, Systems  and web development.",
+      "I love programming, especially Competitive Programming, Networking, Systems and web development. I enjoy running & do callisthenics workouts.",
   },
   {
     id: 1,
@@ -52,9 +52,10 @@ export default function Home() {
           <p className="text-pink-500">Hello World!</p>
           <p>&quot;). I&apos;m</p>
         </div>
-        <div className="text-5xl font-semibold flex flex-row title-spacing">
-          <p className="text-6xl title-spacing">Belgutei Byambadorj</p>
-          <p className="text-accent text-pink-500">.</p>
+        <div className="text-5xl font-semibold flex flex-row">
+          <div className="text-6xl title-spacing">
+            Belgutei Byambadorj<span className="text-pink-500 inline">.</span>
+          </div>
         </div>
       </div>
       <ul>{listItems}</ul>
