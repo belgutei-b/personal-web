@@ -24,8 +24,8 @@ const config: Config = {
       typography: (theme: any) => ({
         DEFAULT: {
           css: {
-            // color: theme("colors.gray.800"),
             h1: {
+              fontWeight: '700',
               color: theme("colors.gray.50"),
               letterSpacing: theme("letterSpacing.tight"),
             },

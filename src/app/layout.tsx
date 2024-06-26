@@ -29,7 +29,7 @@ export default async function RootLayout({
               <Header />
               <div className="flex flex-row mb-10">
                 <div className="w-1/12"></div>
-                <div className="flex-auto">{children}</div>
+                <div className="w-full">{children}</div>
                 <div className="w-1/12"></div>
               </div>
             </div>
