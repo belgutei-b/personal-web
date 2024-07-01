@@ -58,7 +58,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <ul>{listItems}</ul>
+      <div>{listItems}</div>
     </div>
   );
 }
