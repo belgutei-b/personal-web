@@ -8,19 +8,32 @@ export default async function Page() {
     return <div>Error! 404.</div>;
   }
   return (
-    <div>
-      <p>All blogs</p>
-      {allBlogsFrontmatter.map((frontmatter) => (
-        <div className="border-solid border-2 rounded-lg mb-10 py-2 px-2">
-          <div className="flex flex-row justify-between mb-1">
-            <Link href={`/blogs/${frontmatter.fileName}`} className="text-2xl">
-              {frontmatter.title}
-            </Link>
-            <div className="">{frontmatter.date}</div>
+    <div className="">
+      <p className="mb-5 text-5xl font-bold mt-10">All blogs</p>
+      <div className="mt-10">
+        {allBlogsFrontmatter.map((frontmatter) => (
+          <div className="rounded-lg mb-7">
+            <div className="flex text-xs text-stone-400 pb-1">
+              <div>{frontmatter.date}</div>
+              <div className="pr-0.5 pl-2">•</div>
+              <div className="flex">
+                {frontmatter.tags.map((tag) => (
+                  <Link href={`/tags/${tag}`} className="px-1.5 italic">#{tag}</Link>
+                ))}
+              </div>
+            </div>
+            {/*  */}
+            <div className="justify-between mb-7">
+              <Link href={`/blogs/${frontmatter.fileName}`} className="text-3xl">
+                {frontmatter.title}
+              </Link>
+              <div className="text-sm mt-2 text-stone-400 tracking-tighter">{frontmatter.summary}</div>
+            </div>
+            {/*  */}
+            <hr />
           </div>
-          <BlogTags tags={frontmatter.tags} />
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

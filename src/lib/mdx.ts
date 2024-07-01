@@ -14,7 +14,8 @@ import remarkMath from "remark-math";
 const root = process.cwd();
 const pathToBlogs = path.join(root, "blogposts");
 
-export async function getCodeFrontmatter(filePath: string) {
+export async function getCodeFrontmatter(fileName: string) {
+  const filePath = path.join(pathToBlogs, fileName);
   const mdxSource = fs.readFileSync(filePath, "utf-8");
   const result = await bundleMDX({
     source: mdxSource,
@@ -45,8 +46,7 @@ export async function getBlogsFrontmatter() {
     const fileNames = fs.readdirSync(pathToBlogs);
     const allBlogsFrontmatter: FrontmatterType[] = [];
     for (const fileName of fileNames) {
-      const filePath = path.join(pathToBlogs, fileName);
-      const { code, frontmatter } = await getCodeFrontmatter(filePath);
+      const { code, frontmatter } = await getCodeFrontmatter(fileName);
       allBlogsFrontmatter.push(frontmatter as FrontmatterType);
     }
     return allBlogsFrontmatter;

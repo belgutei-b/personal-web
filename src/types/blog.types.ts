@@ -6,4 +6,5 @@ export type FrontmatterType = {
   week?: number;
   publish: boolean;
   fileName: string;
+  summary: string;
 };
