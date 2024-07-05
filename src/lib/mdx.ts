@@ -3,20 +3,28 @@ import fs from "fs";
 import { bundleMDX } from "mdx-bundler";
 import "katex/dist/katex.min.css"; // preventing from rendered twice
 import { FrontmatterType } from "@/types/blog.types";
+import {visit} from 'unist-util-visit';
+import {fromMarkdown} from 'mdast-util-from-markdown';
 
 // rehype packages
 import rehypePrism from "rehype-prism-plus";
 import rehypeHighlight from "rehype-highlight";
 import rehypeKatex from "rehype-katex";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 // remark packages
 import remarkMath from "remark-math";
 
 const root = process.cwd();
 const pathToBlogs = path.join(root, "blogposts");
 
+
+
+
 export async function getCodeFrontmatter(fileName: string) {
   const filePath = path.join(pathToBlogs, fileName);
   const mdxSource = fs.readFileSync(filePath, "utf-8");
+  // console.log(lines);
   const result = await bundleMDX({
     source: mdxSource,
     mdxOptions(options, frontmatter) {
@@ -29,8 +37,9 @@ export async function getCodeFrontmatter(fileName: string) {
         rehypePrism,
         rehypeHighlight,
         rehypeKatex,
+        rehypeSlug,
+        rehypeAutolinkHeadings,
       ];
-
       return options;
     },
   });

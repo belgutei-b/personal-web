@@ -13,13 +13,11 @@ export default function CustomBlog({
   };
 }) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
-
   return (
     <>
-      <header>
-        <h1>{frontmatter.title}</h1>
-        <p>{frontmatter.description}</p>
-      </header>
+      <div>
+        {frontmatter.title}
+      </div>
       <main className="prose dark:prose-invert">
         <Component />
       </main>
