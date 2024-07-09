@@ -21,7 +21,11 @@ export default async function Page() {
               <div className="pr-0.5 pl-2">•</div>
               <div className="flex">
                 {frontmatter.tags.map((tag) => (
-                  <Link href={`/tags/${tag}`} className="px-1.5 italic">
+                  <Link
+                    href={`/tags/${tag}`}
+                    key={tag}
+                    className="px-1.5 italic"
+                  >
                     #{tag}
                   </Link>
                 ))}
