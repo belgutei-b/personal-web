@@ -9,9 +9,7 @@ export default async function Page({
   const { code, frontmatter, toc } = await getCodeFrontmatter(params.filename);
   return (
     <div>
-      <div>
-        <CustomBlog code={code} frontmatter={frontmatter} toc={toc} />
-      </div>
+      <CustomBlog code={code} frontmatter={frontmatter} toc={toc} />
     </div>
   );
 }

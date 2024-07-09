@@ -17,17 +17,22 @@ export default function CustomBlog({
   };
   toc: Toc;
 }) {
-  console.log(toc);
   const pathname = usePathname();
-  console.log(pathname);
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   return (
-    <>
-      <div>{frontmatter.title}</div>
-      <div className="flex">
-        <div className="text-white">
+    <div className="w-full h-full">
+      <div className="flex flex-col items-center my-4">
+        <div className="text-4xl">{frontmatter.title}</div>
+        <div>{frontmatter.date}</div>
+      </div>
+      <div className="flex justify-center">
+        <div className="flex flex-col mr-5 text-sm space-y-3">
           {toc.map((heading) => (
-            <Link href={`${pathname}${heading.url}`} key={heading.url}>
+            <Link
+              href={`${pathname}${heading.url}`}
+              key={heading.url}
+              className="text-zinc-300 hover:text-zinc-50"
+            >
               {heading.value}
             </Link>
           ))}
@@ -36,6 +41,6 @@ export default function CustomBlog({
           <Component />
         </div>
       </div>
-    </>
+    </div>
   );
 }
