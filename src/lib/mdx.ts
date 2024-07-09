@@ -3,35 +3,40 @@ import fs from "fs";
 import { bundleMDX } from "mdx-bundler";
 import "katex/dist/katex.min.css"; // preventing from rendered twice
 import { FrontmatterType } from "@/types/blog.types";
-import {visit} from 'unist-util-visit';
-import {fromMarkdown} from 'mdast-util-from-markdown';
 
 // rehype packages
 import rehypePrism from "rehype-prism-plus";
 import rehypeHighlight from "rehype-highlight";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import remarkTocHeadings from "./rehype-headings";
 // remark packages
 import remarkMath from "remark-math";
 
 const root = process.cwd();
 const pathToBlogs = path.join(root, "blogposts");
 
-
-
+type Toc = {
+  value: string;
+  url: string;
+}[];
 
 export async function getCodeFrontmatter(fileName: string) {
   const filePath = path.join(pathToBlogs, fileName);
   const mdxSource = fs.readFileSync(filePath, "utf-8");
-  // console.log(lines);
+  const toc: Toc = [];
   const result = await bundleMDX({
     source: mdxSource,
     mdxOptions(options, frontmatter) {
       // this is the recommended way to add custom remark/rehype plugins:
       // The syntax might look weird, but it protects you in case we add/remove
       // plugins in the future.
-      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkMath];
+      options.remarkPlugins = [
+        ...(options.remarkPlugins ?? []),
+        remarkMath,
+        [remarkTocHeadings, { exportRef: toc }],
+      ];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         rehypePrism,

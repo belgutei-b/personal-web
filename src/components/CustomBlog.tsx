@@ -12,6 +12,7 @@ export default function CustomBlog({
     [key: string]: any;
   };
 }) {
+  
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   return (
     <>
