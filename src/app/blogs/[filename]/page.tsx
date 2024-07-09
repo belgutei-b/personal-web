@@ -6,11 +6,11 @@ export default async function Page({
 }: {
   params: { filename: string };
 }) {
-  const { code, frontmatter } = await getCodeFrontmatter(params.filename);
+  const { code, frontmatter, toc } = await getCodeFrontmatter(params.filename);
   return (
     <div>
       <div>
-        <CustomBlog code={code} frontmatter={frontmatter} />
+        <CustomBlog code={code} frontmatter={frontmatter} toc={toc} />
       </div>
     </div>
   );

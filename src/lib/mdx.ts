@@ -48,6 +48,7 @@ export async function getCodeFrontmatter(fileName: string) {
   return {
     code,
     frontmatter,
+    toc,
   };
 }
 
