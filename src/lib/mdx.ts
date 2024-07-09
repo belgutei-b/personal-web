@@ -3,6 +3,7 @@ import fs from "fs";
 import { bundleMDX } from "mdx-bundler";
 import "katex/dist/katex.min.css"; // preventing from rendered twice
 import { FrontmatterType } from "@/types/blog.types";
+import { Toc } from "@/types/toc";
 
 // rehype packages
 import rehypePrism from "rehype-prism-plus";
@@ -10,17 +11,12 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import remarkTocHeadings from "./rehype-headings";
+import remarkTocHeadings from "./remark-toc-headings";
 // remark packages
 import remarkMath from "remark-math";
 
 const root = process.cwd();
 const pathToBlogs = path.join(root, "blogposts");
-
-type Toc = {
-  value: string;
-  url: string;
-}[];
 
 export async function getCodeFrontmatter(fileName: string) {
   const filePath = path.join(pathToBlogs, fileName);
