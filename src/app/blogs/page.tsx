@@ -9,11 +9,13 @@ export default async function Page() {
   }
   return (
     <div className="">
-      <p className="mb-5 text-5xl font-bold mt-10">All blogs</p>
-      <div className="mt-10">
+      <div className="flex flex-col items-center">
+        <div className="my-10 text-5xl font-bold w-full md:w-4/5 lg:w-2/3 lg:text-7xl">
+          All blogs
+        </div>
         {allBlogsFrontmatter.map((frontmatter) => (
           <div
-            className="rounded-lg mb-7 relative group"
+            className="rounded-lg mb-7 relative group lg:w-2/3 md:w-4/5 w-full"
             key={frontmatter.fileName}
           >
             <div className="flex text-xs text-stone-400 pb-1">

@@ -22,22 +22,27 @@ export default function CustomBlog({
   return (
     <div className="w-full h-full">
       <div className="flex flex-col items-center my-4">
-        <div className="text-4xl">{frontmatter.title}</div>
-        <div>{frontmatter.date}</div>
+        <div className="text-4xl lg:text-6xl  text-custom-green">
+          {frontmatter.title}
+        </div>
+        <div className="mt-3">{frontmatter.date}</div>
       </div>
-      <div className="flex justify-center">
-        <div className="flex flex-col mr-5 text-sm space-y-3">
-          {toc.map((heading) => (
+      <div className="flex justify-center flex-col lg:flex-row w-full">
+        <div className="flex flex-col text-sm space-y-3 w-1/5">
+          <p className="text-lg">Table of Contents</p>
+          {toc.map((heading, index) => (
             <Link
               href={`${pathname}${heading.url}`}
               key={heading.url}
-              className="text-zinc-300 hover:text-zinc-50"
+              className="text-zinc-300 hover:text-zinc-50 pl-4 flex"
             >
+              {index + 1}
+              <p className="mr-1">.</p>
               {heading.value}
             </Link>
           ))}
         </div>
-        <div className="prose dark:prose-invert">
+        <div className="prose dark:prose-invert w-4/5 ml-5">
           <Component />
         </div>
       </div>
