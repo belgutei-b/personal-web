@@ -47,13 +47,26 @@ export default function CustomBlog({
               <Link
                 href={`${pathname}${heading.url}`}
                 key={heading.url}
-                className="text-custom-green hover:text-custom-green-h pl-4 flex underline underline-offset-2"
+                className="text-violet-400  hover:text-violet-200 pl-4 flex underline underline-offset-2"
               >
-                {index + 1}
-                <p className="mr-1">.</p>
+                {/* text-cyan-400 */}
+                {/* {index + 1} */}
+                {/* <p className="mr-1">.</p> */}
                 {heading.value}
               </Link>
             ))}
+          <div className="text-lg text-zinc-300">Tags</div>
+          <div className="flex flex-wrap">
+            {frontmatter.tags.map((tag: string) => (
+              <Link
+                href={`/tags/${tag}`}
+                key={tag}
+                className="border mb-2 px-3 py-1 mr-3 rounded-2xl hover:bg-zinc-400 hover:text-zinc-800"
+              >
+                {tag}
+              </Link>
+            ))}
+          </div>
         </div>
         <div className="prose dark:prose-invert pl-10">
           <Component />
