@@ -28,7 +28,7 @@ export default function CustomBlog({
         <div className="mt-3">{frontmatter.date}</div>
       </div>
       <div className="flex justify-center flex-col lg:flex-row w-full">
-        <div className="flex flex-col text-sm space-y-3 w-1/5">
+        <div className="flex flex-col text-sm space-y-3 lg:w-1/5">
           <p className="text-lg">Table of Contents</p>
           {toc.map((heading, index) => (
             <Link
@@ -42,7 +42,7 @@ export default function CustomBlog({
             </Link>
           ))}
         </div>
-        <div className="prose dark:prose-invert w-4/5 ml-5">
+        <div className="prose dark:prose-invert w-4/5 lg:ml-16">
           <Component />
         </div>
       </div>
