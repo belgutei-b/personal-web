@@ -55,6 +55,7 @@ export default function CustomBlog({
                 {heading.value}
               </Link>
             ))}
+          <hr />
           <div className="text-lg text-zinc-300">Tags</div>
           <div className="flex flex-wrap">
             {frontmatter.tags.map((tag: string) => (
