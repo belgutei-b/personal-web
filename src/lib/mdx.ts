@@ -6,7 +6,7 @@ import { FrontmatterType } from "@/types/blog.types";
 import { Toc } from "@/types/toc";
 
 // rehype packages
-import rehypePrism from "rehype-prism-plus";
+// import rehypePrism from "rehype-prism-plus";
 import rehypeHighlight from "rehype-highlight";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
@@ -35,7 +35,7 @@ export async function getCodeFrontmatter(fileName: string) {
       ];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
-        rehypePrism,
+        // rehypePrism,
         rehypeHighlight,
         rehypeKatex,
         rehypeSlug,

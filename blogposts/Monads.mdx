@@ -1,0 +1,208 @@
+---
+title: 'Monads - Haskell'
+date: '2024-07-26'
+tags: ['Haskell', 'UNSW']
+courseId: 'COMP3141'
+week: 7
+publish: true
+fileName: 'Monads.mdx'
+summary: "Monads, bind operation, kinds in haskell and instances of Maybe and List."
+---
+
+
+### Binds
+
+Custom bind implementation for Maybe type. Bind function takes two arguments:
+1. Maybe a
+2. (a -> Maybe b)
+
+By using bind, we can pass the argument to the function without having to worry about the type (a -> Maybe b). If it is Nothing, bind function will not call the function.
+
+```Haskell
+bindM :: Maybe a -> (a -> Maybe b) -> Maybe b
+bindM Nothing _ = Nothing
+bindM (Just x) k = k x
+
+-- lambda function: takes arguments followed by a expression
+-- \param1 param2 ... paramN -> expression
+
+secrets :: [(Int,String)]
+secrets =
+[(0,"has a crush on their spinning instructor!"),
+(1,"is italian but secretly loves pineapple on pizza!")]
+
+idTable :: [(String,Int)]
+idTable =
+[("Bertram",0),
+("Agatha",1),
+("Leif",2)]
+
+-- lookup :: Eq a => a -> [(a, b)] -> Maybe b
+getSecret' e =
+	lookup e idTable `bindM` \id ->
+	lookup id secrets `bindM` \secret ->
+	Just $ "OMG " ++ e ++ " " ++ secret ++ "!"
+
+-- lookup e idTable    - returns (Maybe Int)
+-- 2nd argument of bindM: \id -> lookup id secrets (a -> Maybe b)
+-- if lookup e idTable returns Nothing, bindM function will return nothing
+	-- otherwise, it will do (\id -> lookup id secrets)
+-- if there is Nothing after any operation, `bindM` simply not execute the function
+```
+
+
+### Kinds
+```
+Term layer: 1, True, ["hello", "world"]
+Type layer: Bool, Maybe a, (->)
+Intuitively: kinds are to types, as types are to terms
+In the same way as all terms have a type,
+	all types have a kind.
+
+* is the kind that assigned to all types that are inhabited
+"Inhabited" - contain values
+
+Bool    :: *
+[[Int]] :: *
+[Int]   :: *
+
+
+Arrow types are for type constructors
+
+Maybe Int :: *
+Maybe     :: * -> *
+^ Maybe is a type constructor, given a type Int, it will return Maybe Int
+If we give Maye an argument that has kind *, we get a type of kind *.
+``` 
+
+
+### Functors
+```haskell
+class Functor f where
+	fmap :: (a -> b) -> f a -> f b
+
+-- :info Functor gives all the types
+```
+Unary type constructor: takes one type as an argument and produces a new type.
+A functor is a unary type constructor equipped with a map function
+```haskell
+maybeMap :: (a -> b) -> Maybe a -> Maybe b
+maybeMap f Nothing = Nothing
+maybeMap f (Just x) = Just $ f x
+```
+
+- Because a functor is a unary type, it can be applied to Maybe or List.
+	- map function applies the function to List, map is an instance of functor
+	- :t map
+		- `map :: (a -> b) -> [a] -> [b]`
+	- :t fmap
+		- `fmap :: Functor f => (a -> b) -> f a -> f b`
+
+```
+map succ [1,2,3]     -> [2,3,4]
+fmap succ [1,2,3]    -> [2,3,4]
+fmap succ (Just 3)   -> (Just 4)
+```
+
+There are two functor laws
+1. `fmap id x  = x` identity
+2. `fmap f (fmap g x) = fmap (f . g) x` composition
+
+### Data & Type Constructor
+`data Thing a = Thing a a`
+- Left side: Type constructor
+- Right side: Data constructor
+```haskell
+thingInt :: Thing Int
+thingInt = Thing 3 4
+```
+### Monads
+
+```haskell
+class Monad m where
+	return :: a -> m a
+	(>>=) :: m a -> (a -> m b) -> m b
+```
+Here, in return function, type `m` can be thought as a container that wraps value a.
+
+
+### Kleisli Arrows
+```
+(>>=)  :: m a      ->  (a -> m b)       ->  m b
+		 ^monad        ^Kleisli arrow       ^monad
+
+revApp :: a         ->  (a -> b)    -> b
+		  ^value        ^funciton      ^value
+
+*Kleisli composition*
+(.) :: (b -> c)      -> (a -> b)     -> (a -> c)
+        ^function        ^function       ^function
+
+(<=<) :: (b -> m c) -> (a -> m b) -> (a -> m c)
+          ^Kleisli      ^Kleisli      ^Kleisli
+```
+
+```haskell
+revApp :: a -> (a -> b) -> b
+revApp x f = f x
+```
+
+
+### Do notation
+```haskell
+use :: State Integer Integer
+use =
+  get         >>= \x ->
+  put (x + 1) >>= \_ ->
+  return x
+
+-- using do notation
+use :: State Integer Integer
+use = do
+  x <- get     -- if we want to store the value
+  put (x + 1)
+  return x
+```
+
+```haskell
+-- another example
+
+safeDivide :: Int -> Int -> Maybe Int
+safeDivide _ 0 = Nothing
+safeDivide x y = Just (x `div` y)
+
+calc :: Maybe Int
+calc = safeDivide 10 2 >>= \x ->
+	   safeDivide x 2 >>= \y ->
+	   return (y + 1)
+
+doCalc :: Maybe Int
+doCalc = do
+	x <- safeDivide 10 2
+	y <- safeDivide x 2
+	return (y + 1)
+```
+`<-`: Extracts the result from a monadic action.
+
+### List Monad
+Because list is a instance of Monad, we need to define *return* & *bind*.
+
+```haskell
+returnL :: a -> [a]
+returnL a = [a]
+
+bindL :: [a] -> (a -> [b]) -> [b]
+bindL l f = concat $ map f l
+```
+
+```
+ghci> bindL [1, 10, 100] (\x -> [x - 1, x + 1])
+[0,2,9,11,99,101]
+
+(standard Monad)
+ghci> [1, 10, 100] >>= (\x -> [x - 1, x + 1])
+[0,2,9,11,99,101]
+```
+
+
+
