@@ -2,8 +2,8 @@ import path from "path";
 import fs from "fs";
 import { bundleMDX } from "mdx-bundler";
 import "katex/dist/katex.min.css"; // preventing from rendered twice
-import { FrontmatterType } from "@/types/blog.types";
-import { Toc } from "@/types/toc";
+import type { FrontmatterType } from "@/types/blog.types";
+import type { Toc } from "@/types/toc";
 
 // rehype packages
 // import rehypePrism from "rehype-prism-plus";
@@ -14,6 +14,10 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkTocHeadings from "./remark-toc-headings";
 // remark packages
 import remarkMath from "remark-math";
+
+// Import Haskell language support
+import haskell from "highlight.js/lib/languages/haskell";
+import java from "highlight.js/lib/languages/java";
 
 const root = process.cwd();
 const pathToBlogs = path.join(root, "blogposts");
@@ -36,7 +40,16 @@ export async function getCodeFrontmatter(fileName: string) {
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         // rehypePrism,
-        rehypeHighlight,
+        [
+          rehypeHighlight,
+          {
+            languages: {
+              haskell,
+              java, // Register Haskell language
+            },
+            subset: false, // Include all languages from highlight.js
+          },
+        ],
         rehypeKatex,
         rehypeSlug,
         rehypeAutolinkHeadings,
