@@ -10,10 +10,7 @@ export default function Footer() {
         <Link href="mailto:bewlgutei0323@gmail.com">
           <IoIosMail size={28} />
         </Link>
-        <Link
-          href="https://www.linkedin.com/in/belgutei-byambadorj-826472201/"
-          target="_blank"
-        >
+        <Link href="https://www.linkedin.com/in/belgutei0323" target="_blank">
           <FaLinkedin size={28} />
         </Link>
         <Link

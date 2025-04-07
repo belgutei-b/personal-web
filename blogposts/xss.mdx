@@ -1,0 +1,53 @@
+---
+title: "Cross Site Scripting"
+date: "2025-04-07"
+tags: ["OS", "UNSW", "COMP6843", "some-long-tag", "new-tag"]
+courseId: "COMP6843"
+week: 1
+publish: true
+fileName: "xss.mdx"
+summary: "Cross Site Scripting"
+---
+
+There are 3 main types of Cross-site Scripting (XSS) attacks
+
+- reflected
+  - has social engineering aspect
+- restored
+  - stored in db
+- dom based
+
+### Prevention
+
+Sanitize the input provided by the user - [Dom Purify gihtub](https://github.com/cure53/DOMPurify)
+
+### XSS vs Server side attacks
+
+- xss: the main impacts are on the clients. `JS-injection` on the browser. The attacker can act as a user
+- Server side - responsibility on the developers.
+
+### Defence in depth in XSS.
+
+Also, the browsers take measurements against xss attacks to protect the users. We could even prevent from executing any javascript on the browser. But, the web application could require some javascript to function. Then, we can specify specific javascript that could be executed on the browser. To achieve that, we can set http header.
+
+### Content-Security Policy (CSP)
+
+[Mozilla develop guide on CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP)
+
+- `Content-Security-Policy: script-src 'none'`
+  - with this http response header, the browser wouldn't execute in javascript at all (very strict rule).
+- `Content-Security-Policy: script-src 'self' https://example.com`
+  - allow to execute javascript from the same origin
+    - vulnerable to stored xss
+  - allow to execute script from `example.com`
+- `unsafe-inline`: executes inline `script tag`
+  - if the response specified CSP, without `unsafe-inline` `<script>alert(1)</script>` wouldn't be executed on the browser
+- `script-src 'sha256-abcdef123456`
+  - allow to execute scripts that the hash value matches to `CSP` hash value
+  - `<script integrity='sha256-abcdef'>`: it is optional to provide integrity/hash value in the script tag
+- `nonce-radomvalue` in `CSP` header
+  - to generate using `secrets` library
+  - `import secrets`
+  - `secrets.token_hex(40)`
+  - then in scripts tag `<script src="some-script.js" nonce="randomvalue">`
+- Content Delivery Network (CDN)
