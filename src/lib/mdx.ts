@@ -67,20 +67,7 @@ export async function getCodeFrontmatter(fileName: string) {
 
 export async function getBlogsFrontmatter() {
   try {
-    // Check if directory exists
-    if (!fs.existsSync(pathToBlogs)) {
-      console.error(`Blog posts directory not found: ${pathToBlogs}`);
-      return [];
-    }
-
     const fileNames = fs.readdirSync(pathToBlogs);
-
-    // Check if directory is empty
-    if (fileNames.length === 0) {
-      console.log("No blog posts found in directory");
-      return [];
-    }
-
     const allBlogsFrontmatter: FrontmatterType[] = [];
 
     for (const fileName of fileNames) {
