@@ -81,7 +81,6 @@ export async function getBlogsFrontmatter() {
         allBlogsFrontmatter.push(frontmatter as FrontmatterType);
       } catch (error) {
         console.error(`Error processing ${fileName}:`, error);
-        // Continue with other files instead of failing completely
       }
     }
 
