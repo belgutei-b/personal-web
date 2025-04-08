@@ -20,7 +20,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div
-          className="flex flex-row h-screen w-screen font-mono overflow-auto"
+          className="flex flex-row h-screen w-screen font-mono overflow-auto bg-stone-900"
           style={{ scrollbarWidth: "none" }}
         >
           <div className="w-1/12"></div>
