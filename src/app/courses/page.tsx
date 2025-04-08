@@ -31,12 +31,16 @@ const terms = [
   },
   {
     title: "T3 2023",
-    courses: ["COMP1521", "COMP2511", "MATH3411"],
+    courses: [
+      "COMP1521: Computer Systems Fundamentals",
+      "COMP2511: Object-Oriented Design & Programming",
+      "MATH3411: Information, Codes and Ciphers",
+    ],
   },
   {
     title: "T2 2023",
     courses: [
-      "COMP2521: Computer Systems Fundamentals",
+      "COMP2521: Data Structures and Algorithms",
       "COMP1531: Software Engineering Fundamentals",
       "MATH1241: Higher Mathematics 1B",
     ],
@@ -49,16 +53,19 @@ const terms = [
 
 export default function Page() {
   return (
-    <div>
+    <div className="mt-4">
       {terms.map((term) => (
-        <div key={term.title}>
-          <div className="text-custom-green hover:text-custom-green-h">
+        <div key={term.title} className="mb-4 md:mb-7">
+          <div className="text-custom-green hover:text-custom-green-h text-lg md:text-xl border border-stone-500 rounded-md w-fit px-1.5 py-0.5 mb-1.5">
             {term.title}
           </div>
-          <div>
+          <div className="space-y-3">
             {term.courses.map((course) => (
-              <div className="text-stone-400" key={course}>
-                {course}
+              <div className="relative" key={course}>
+                <span className="absolute w-px h-full left-0 bg-gradient-to-b from-black via-custom-green to-black"></span>
+                <div className="text-stone-400 text-sm pl-2 md:text-base">
+                  {course}
+                </div>
               </div>
             ))}
           </div>
