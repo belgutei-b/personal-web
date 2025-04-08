@@ -67,15 +67,40 @@ export async function getCodeFrontmatter(fileName: string) {
 
 export async function getBlogsFrontmatter() {
   try {
-    const fileNames = fs.readdirSync(pathToBlogs);
-    const allBlogsFrontmatter: FrontmatterType[] = [];
-    for (const fileName of fileNames) {
-      const { code, frontmatter } = await getCodeFrontmatter(fileName);
-      allBlogsFrontmatter.push(frontmatter as FrontmatterType);
+    // Check if directory exists
+    if (!fs.existsSync(pathToBlogs)) {
+      console.error(`Blog posts directory not found: ${pathToBlogs}`);
+      return [];
     }
+
+    const fileNames = fs.readdirSync(pathToBlogs);
+
+    // Check if directory is empty
+    if (fileNames.length === 0) {
+      console.log("No blog posts found in directory");
+      return [];
+    }
+
+    const allBlogsFrontmatter: FrontmatterType[] = [];
+
+    for (const fileName of fileNames) {
+      // Skip non-MDX files
+      if (!fileName.endsWith(".mdx") && !fileName.endsWith(".md")) {
+        continue;
+      }
+
+      try {
+        const { frontmatter } = await getCodeFrontmatter(fileName);
+        allBlogsFrontmatter.push(frontmatter as FrontmatterType);
+      } catch (error) {
+        console.error(`Error processing ${fileName}:`, error);
+        // Continue with other files instead of failing completely
+      }
+    }
+
     return allBlogsFrontmatter;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.error("Error getting blog frontmatter:", error);
+    return [];
   }
-  return null;
 }

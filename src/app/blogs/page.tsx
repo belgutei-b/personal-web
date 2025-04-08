@@ -1,5 +1,4 @@
 import { getBlogsFrontmatter } from "@/lib/mdx";
-import BlogTags from "@/components/BlogTags";
 import Link from "next/link";
 
 export default async function Page() {
