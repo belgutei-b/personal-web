@@ -1,0 +1,38 @@
+---
+title: "Template in C++"
+date: "2025-05-18"
+tags: ["c++"]
+publish: true
+fileName: "template-cplusplus.mdx"
+summary: "Introduction for template in C++ for writing generic functions"
+---
+
+Template allows to implement a generic functions that works with certain types. During compile time, type specific versions (image) of the function is generated.
+
+### Generic function code
+
+```c++
+template<typename T>
+T mymax(T a, T b) {
+	return b < a ? a : b;
+}
+
+// calling mymax function
+mymax(3, 4);
+mymax<string>("abc", "def"); // can specify the type
+```
+
+- T is a placeholder of a type
+
+### Generic function with multiple template parameters
+
+```c++
+template<typename T1, typename T2>
+auto mymax(const T1& a, const T2& b) {
+	return b < a ? a : b;
+}
+```
+
+- return type of the function is deduced during compile time
+- compiler deduces a common type - superset
+  - behind the scene `std::common_type_t<T1, T2>`

@@ -18,6 +18,7 @@ import remarkMath from "remark-math";
 // Import Haskell language support
 import haskell from "highlight.js/lib/languages/haskell";
 import java from "highlight.js/lib/languages/java";
+import cpp from "highlight.js/lib/languages/cpp";
 
 const root = process.cwd();
 const pathToBlogs = path.join(root, "blogposts");
@@ -45,7 +46,8 @@ export async function getCodeFrontmatter(fileName: string) {
           {
             languages: {
               haskell,
-              java, // Register Haskell language
+              java,
+              cpp,
             },
             subset: false, // Include all languages from highlight.js
           },
