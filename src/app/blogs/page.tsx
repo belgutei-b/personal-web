@@ -23,8 +23,8 @@ export default async function Page() {
   }
   const tags = getTags(allBlogsFrontmatter);
   return (
-    <div className="flex flex-col w-full">
-      <div className="flex flex-col items-center">
+    <div className="flex flex-col md:flex-row-reverse items-start">
+      <div className="flex flex-1 flex-col items-center md:items-start md:ml-10">
         <div className="my-10 text-5xl font-bold w-full md:w-4/5 lg:w-2/3 lg:text-7xl">
           All blogs
         </div>
@@ -58,7 +58,7 @@ export default async function Page() {
                 >
                   {frontmatter.title}
                 </Link>
-                <div className="text-sm mt-2 text-stone-400 tracking-tighter">
+                <div className="text-sm mt-2 text-stone-300 tracking-tighter">
                   {frontmatter.summary}
                 </div>
               </div>
@@ -68,16 +68,19 @@ export default async function Page() {
             </div>
           ))}
       </div>
-      <div className="flex flex-wrap space-x-2 overflow-x-auto">
-        {tags.map((tag) => (
-          <Link
-            className="border border-zinc-500 text-stone-400 mb-2 px-3 py-0.5 rounded-2xl text-sm hover:bg-zinc-400 hover:text-zinc-800"
-            key={tag}
-            href={`/tags/${tag}`}
-          >
-            {tag}
-          </Link>
-        ))}
+      <div className="md:mt-10 md:w-60">
+        <div className="text-2xl mb-3">Tags</div>
+        <div className="flex flex-wrap">
+          {tags.map((tag) => (
+            <Link
+              className="border border-zinc-500 text-stone-300 mb-2 px-3 py-0.5 rounded-2xl text-sm hover:bg-zinc-400 hover:text-zinc-800 mr-1.2"
+              key={tag}
+              href={`/tags/${tag}`}
+            >
+              {tag}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
