@@ -13,6 +13,7 @@
     "@tsparticles/react": "^3.0.0",
     "esbuild": "^0.25.2",
     "highlight.js": "^11.9.0",
+    "lucide-react": "^0.511.0",
     "mdast-util-from-markdown": "^2.0.1",
     "mdx-bundler": "^10.0.2",
     "next": "^14.2.26",

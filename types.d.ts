@@ -9,6 +9,6 @@ type Meta = {
 };
 
 type BlogPost = {
-  code: string,
-  frontmatter: Meta
+  code: string;
+  frontmatter: Meta;
 };
