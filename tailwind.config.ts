@@ -25,7 +25,7 @@ const config: Config = {
         DEFAULT: {
           css: {
             h1: {
-              fontWeight: '700',
+              fontWeight: "700",
               color: theme("colors.gray.50"),
               letterSpacing: theme("letterSpacing.tight"),
             },
