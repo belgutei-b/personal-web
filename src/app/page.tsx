@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <div className="mt-14">
       <CustomParticles />
-      <div className="mb-12 tracking-tighter leading-relaxed hover:cursor-default">
+      <div className="px-4 md:px-0 mt-20 md:mt-0 mb-12 tracking-tighter leading-relaxed hover:cursor-default">
         <div className="flex font-medium text-2xl mb-4">
           <p>printf(&quot;</p>
           <p className="text-pink-500">Hello World!</p>
@@ -58,7 +58,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div>{listItems}</div>
+      <div className="px-4 md:px-0">{listItems}</div>
     </div>
   );
 }

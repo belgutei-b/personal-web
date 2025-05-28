@@ -69,7 +69,7 @@ export default async function Page() {
           ))}
       </div>
       {/* tags */}
-      <div className="md:mt-10 md:w-60 px-4 md:px-0">
+      <div className="md:mt-10 md:w-60 px-4 md:px-0 mb-4 md:mb-0">
         <div className="text-2xl mb-3">Tags</div>
         <div className="flex flex-wrap space-x-2">
           {tags.map((tag) => (

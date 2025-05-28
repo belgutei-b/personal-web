@@ -35,7 +35,9 @@ export default function Header() {
       <div className="hidden md:flex flex-row h-14 justify-between items-end">
         <div className="text-blue-300 text-xl space-x-9 h-full flex items-end">
           {links.map((link) => (
-            <Link href={link.url}>{link.name}</Link>
+            <Link key={link.url} href={link.url}>
+              {link.name}
+            </Link>
           ))}
         </div>
         <div>
