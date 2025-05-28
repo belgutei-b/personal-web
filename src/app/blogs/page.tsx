@@ -25,7 +25,7 @@ export default async function Page() {
   return (
     <div className="flex flex-col md:flex-row-reverse items-start">
       <div className="flex flex-1 flex-col w-full md:ml-10">
-        <div className="pl-4 md:pl-0 mt-20 mb-10 md:mt-10 text-5xl font-bold w-full lg:w-2/3 lg:text-5xl">
+        <div className="pl-4 md:pl-0 mb-10 md:mt-10 text-5xl font-bold w-full lg:w-2/3 lg:text-5xl">
           All blogs
         </div>
         {allBlogsFrontmatter
