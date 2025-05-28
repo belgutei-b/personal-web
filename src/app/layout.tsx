@@ -23,6 +23,7 @@ export default async function RootLayout({
           className="flex flex-row h-screen w-screen font-mono overflow-auto bg-stone-900"
           style={{ scrollbarWidth: "none" }}
         >
+          <div className="hidden md:block md:w-1/12 lg:w-2/12"></div>
           <div className="flex flex-col justify-between flex-auto">
             <div className="">
               <Header />
@@ -30,6 +31,7 @@ export default async function RootLayout({
             </div>
             <Footer />
           </div>
+          <div className="hidden md:block md:w-1/12 lg:w-2/12"></div>
         </div>
       </body>
     </html>

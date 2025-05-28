@@ -24,18 +24,18 @@ export default async function Page() {
   const tags = getTags(allBlogsFrontmatter);
   return (
     <div className="flex flex-col md:flex-row-reverse items-start">
-      <div className="flex flex-1 flex-col items-center md:items-start md:ml-10">
-        <div className="my-10 text-5xl font-bold w-full md:w-4/5 lg:w-2/3 lg:text-7xl">
+      <div className="flex flex-1 flex-col w-full md:ml-10">
+        <div className="pl-4 md:pl-0 mt-20 mb-10 md:mt-10 text-5xl font-bold w-full lg:w-2/3 lg:text-5xl">
           All blogs
         </div>
         {allBlogsFrontmatter
           .sort((a, b) => b.date.localeCompare(a.date))
           .map((frontmatter) => (
             <div
-              className="rounded-lg mb-7 relative group lg:w-2/3 md:w-4/5 w-full"
+              className="rounded-lg mb-7 relative group lg:w-10/12 w-full"
               key={frontmatter.fileName}
             >
-              <div className="flex text-xs text-stone-400 pb-1">
+              <div className="px-4 md:px-0 flex text-xs text-stone-400 pb-1">
                 <div>{frontmatter.date}</div>
                 <div className="pr-0.5 pl-2">•</div>
                 <div className="flex flex-wrap">
@@ -51,7 +51,7 @@ export default async function Page() {
                 </div>
               </div>
               {/*  */}
-              <div className="justify-between mb-7">
+              <div className="px-4 md:px-0 justify-between mb-7">
                 <Link
                   href={`/blogs/${frontmatter.fileName}`}
                   className="text-3xl text-custom-green hover:text-custom-green-h"
@@ -68,9 +68,10 @@ export default async function Page() {
             </div>
           ))}
       </div>
-      <div className="md:mt-10 md:w-60">
+      {/* tags */}
+      <div className="md:mt-10 md:w-60 px-4 md:px-0">
         <div className="text-2xl mb-3">Tags</div>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap space-x-2">
           {tags.map((tag) => (
             <Link
               className="border border-zinc-500 text-stone-300 mb-2 px-3 py-0.5 rounded-2xl text-sm hover:bg-zinc-400 hover:text-zinc-800 mr-1.2"
