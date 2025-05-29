@@ -5,7 +5,7 @@ import { FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col relative z-20">
       <div className="flex text-blue-300 justify-center mb-2 space-x-4">
         <Link href="mailto:bewlgutei0323@gmail.com">
           <IoIosMail size={28} />

@@ -27,7 +27,7 @@ export default async function RootLayout({
           <div className="flex flex-col justify-between flex-auto">
             <div className="">
               <Header />
-              <div className="w-full mt-20">{children}</div>
+              <div className="w-full mt-20 md:mt-10">{children}</div>
             </div>
             <Footer />
           </div>
