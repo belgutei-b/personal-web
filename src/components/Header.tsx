@@ -30,7 +30,7 @@ export default function Header() {
   const pathname = usePathname();
   const closeSidebar = () => setIsOpen(false);
   return (
-    <>
+    <div className="relative z-20">
       {/* desktop navbar */}
       <div className="hidden md:flex flex-row h-14 justify-between items-end">
         <div className="text-blue-300 text-xl space-x-9 h-full flex items-end">
@@ -95,6 +95,6 @@ export default function Header() {
           <hr className="mt-2 mx-2 transition-opacity duration-300" />
         </div>
       </div>
-    </>
+    </div>
   );
 }
