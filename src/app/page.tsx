@@ -56,7 +56,7 @@ const listItems = texts.map((text) => (
   </div>
 ));
 
-export const particlesOptions = {
+const particlesOptions = {
   fpsLimit: 120,
   interactivity: {
     events: {
