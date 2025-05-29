@@ -57,14 +57,14 @@ export default function BlogList({
         />
         <div className="flex flex-col md:flex-row-reverse items-start relative z-20">
           <div className="flex flex-1 flex-col w-full md:ml-10">
-            <div className="pl-4 md:pl-0 mb-10 md:mt-10 text-5xl font-bold w-full lg:w-2/3 lg:text-5xl">
+            <div className="pl-4 md:pl-0 mb-4 md:mb-10 md:mt-10 font-bold w-full lg:w-2/3 text-2xl md:text-3xl lg:text-5xl">
               All blogs
             </div>
             {allBlogsFrontmatter
               .sort((a, b) => b.date.localeCompare(a.date))
               .map((frontmatter) => (
                 <div
-                  className="rounded-lg mb-7 relative group lg:w-10/12 w-full"
+                  className="rounded-lg mb-4 md:mb-7 relative group lg:w-10/12 w-full"
                   key={frontmatter.fileName}
                 >
                   <div className="px-4 md:px-0 flex text-xs text-stone-400 pb-1">
@@ -82,11 +82,11 @@ export default function BlogList({
                       ))}
                     </div>
                   </div>
-                  {/*  */}
-                  <div className="px-4 md:px-0 justify-between mb-7">
+                  {/* title & summary  */}
+                  <div className="px-4 md:px-0 justify-between mb-4 md:mb-7">
                     <Link
                       href={`/blogs/${frontmatter.fileName}`}
-                      className="text-3xl text-custom-green hover:text-custom-green-h"
+                      className="text-xl md:text-2xl text-custom-green hover:text-custom-green-h"
                     >
                       {frontmatter.title}
                     </Link>
