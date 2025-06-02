@@ -2,11 +2,12 @@
 import * as React from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import "highlight.js/styles/github-dark.css";
-import  "highlight.js/lib/languages/haskell";
+import "highlight.js/lib/languages/haskell";
 import { Toc } from "@/types/toc";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GoTriangleRight, GoTriangleDown } from "react-icons/go";
+import { mdxComponents } from "@/components/mdx-components";
 
 export default function CustomBlog({
   code,
@@ -70,8 +71,8 @@ export default function CustomBlog({
             ))}
           </div>
         </div>
-        <div className="prose dark:prose-invert pl-10">
-          <Component />
+        <div className="mdx-content prose dark:prose-invert">
+          <Component components={mdxComponents} />
         </div>
       </div>
     </div>

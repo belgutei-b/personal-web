@@ -93,7 +93,7 @@ export default function Page() {
 
   if (init) {
     return (
-      <div className="mt-4 md:mt-0">
+      <div className="mt-4 md:mt-0 w-full">
         <Particles
           id="tsparticles"
           particlesLoaded={particlesLoaded}
