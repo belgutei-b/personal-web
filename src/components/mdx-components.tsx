@@ -10,7 +10,7 @@ export function CodeBlock({ children, className, ...props }: CodeBlockProps) {
     <div className="relative w-full overflow-hidden rounded-lg border-8 border-black bg-muted">
       <div className="overflow-x-auto">
         <pre
-          className={`p-4 text-sm leading-relaxed m-0 ${className || ""}`}
+          className={`p-4 text-sm leading-relaxed mb-0 mt-0 ${className || ""}`}
           {...props}
         >
           <code className="block min-w-0 break-words whitespace-pre-wrap sm:whitespace-pre">

@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-const colors = require("tailwindcss/colors");
 
 const config: Config = {
   content: [
@@ -18,42 +17,44 @@ const config: Config = {
         "custom-pink": "#D741E6",
         "custom-green": "#49F191",
         "custom-green-h": "#80f5b2",
-        sky: colors.sky,
-        fuchsia: colors.fuchsia,
       },
-      typography: (theme: any) => ({
+      typography: {
         DEFAULT: {
           css: {
             h1: {
               fontWeight: "700",
-              color: theme("colors.gray.50"),
-              letterSpacing: theme("letterSpacing.tight"),
+              color: "var(--tw-prose-headings)",
+              letterSpacing: "var(--tw-letter-spacing-tight)",
             },
             h2: {
-              color: theme("colors.gray.50"),
-              letterSpacing: theme("letterSpacing.tight"),
+              color: "var(--tw-prose-headings)",
+              letterSpacing: "var(--tw-letter-spacing-tight)",
             },
             h3: {
-              color: theme("colors.gray.50"),
-              letterSpacing: theme("letterSpacing.tight"),
+              color: "var(--tw-prose-headings)",
+              letterSpacing: "var(--tw-letter-spacing-tight)",
             },
             a: {
               color: "#49F191",
             },
             p: {
-              letterSpacing: theme("letterSpacing.tight"),
+              letterSpacing: "var(--tw-letter-spacing-tight)",
             },
             blockquote: {
-              color: theme("colors.gray.100"),
+              color: "var(--tw-prose-quotes)",
             },
             code: {
-              color: theme("colors.gray.300"),
+              color: "var(--tw-prose-code)",
             },
           },
         },
-      }),
+      },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    // Update to use the new typography plugin for v4
+    require("@tailwindcss/typography"),
+  ],
 };
+
 export default config;
