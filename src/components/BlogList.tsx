@@ -102,13 +102,13 @@ export default function BlogList({
           </div>
           {/* tags */}
           <div className="md:mt-10 md:w-60 px-4 md:px-0 mb-4 md:mb-0">
-            <div className="text-2xl mb-3">Tags</div>
+            <div className="md:text-xl mb-3">Tags</div>
             <div className="flex flex-wrap">
               {tags.map((tag) => (
                 <Link
-                  className="border border-zinc-500 text-stone-300 mb-2 mr-2 px-3 py-0.5 rounded-2xl text-sm hover:bg-zinc-400 hover:text-zinc-800 mr-1.2"
-                  key={tag}
                   href={`/tags/${tag}`}
+                  key={tag}
+                  className="border mb-2 px-2 py-1 mr-3 text-xs rounded-2xl hover:bg-zinc-400 hover:text-zinc-800"
                 >
                   {tag}
                 </Link>
@@ -119,5 +119,5 @@ export default function BlogList({
       </div>
     );
   }
-  return <div>Loading</div>;
+  return <div>Loading...</div>;
 }

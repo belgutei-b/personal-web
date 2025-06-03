@@ -26,7 +26,7 @@ export default function CustomBlog({
   return (
     <div className="w-full h-full">
       <div className="flex flex-col items-center my-4">
-        <div className="text-4xl lg:text-5xl font-bold  text-zinc-300">
+        <div className="text-3xl lg:text-4xl font-bold  text-zinc-300">
           {frontmatter.title}
         </div>
         <div className="mt-3">{frontmatter.date}</div>
@@ -34,7 +34,7 @@ export default function CustomBlog({
       <div className="flex flex-col lg:flex-row w-full">
         <div className="flex flex-col text-sm space-y-3 mb-10 lg:w-1/5">
           <div
-            className="text-lg flex cursor-pointer"
+            className="text-lg flex cursor-pointer px-3 md:px-0"
             onClick={() => setShowToc(!showToc)}
           >
             {showToc ? (
@@ -58,20 +58,23 @@ export default function CustomBlog({
               </Link>
             ))}
           <hr />
-          <div className="text-lg text-zinc-300">Tags</div>
-          <div className="flex flex-wrap">
-            {frontmatter.tags.map((tag: string) => (
-              <Link
-                href={`/tags/${tag}`}
-                key={tag}
-                className="border mb-2 px-3 py-1 mr-3 rounded-2xl hover:bg-zinc-400 hover:text-zinc-800"
-              >
-                {tag}
-              </Link>
-            ))}
+          {/* tags */}
+          <div className="px-3 md:px-0">
+            <div className="text-lg text-zinc-300 mb-2">Tags</div>
+            <div className="flex flex-wrap">
+              {frontmatter.tags.map((tag: string) => (
+                <Link
+                  href={`/tags/${tag}`}
+                  key={tag}
+                  className="border mb-2 px-2 py-1 mr-3 text-xs rounded-2xl hover:bg-zinc-400 hover:text-zinc-800"
+                >
+                  {tag}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="mdx-content prose dark:prose-invert">
+        <div className="mdx-content prose dark:prose-invert px-3 md:px-5 mb-3">
           <Component components={mdxComponents} />
         </div>
       </div>
