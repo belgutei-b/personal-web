@@ -17,6 +17,14 @@ import { particlesOptions } from "@/lib/particlesOptions";
 
 const terms = [
   {
+    title: "T2 2025",
+    courses: [
+      "COMP3900: Computer Science Project",
+      "COMP9417: Machine Learning and Data Mining",
+      "ARTS2375: Philosophical Logic",
+    ],
+  },
+  {
     title: "T1 2025",
     courses: [
       "COMP6843: Extended Web Application Security and Testing",
