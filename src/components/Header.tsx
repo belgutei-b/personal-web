@@ -41,7 +41,7 @@ export default function Header() {
           ))}
         </div>
         <div>
-          <Link href="https://github.com/bebe0323" target="_blank">
+          <Link href="https://github.com/belgutei-b" target="_blank">
             <FaGithub className="mr-3 text-blue-300" size="28" />
           </Link>
         </div>
@@ -55,7 +55,7 @@ export default function Header() {
             strokeWidth={1.5}
             className="my-auto ml-3"
           />
-          <Link href="https://github.com/bebe0323" target="_blank">
+          <Link href="https://github.com/belgutei-b" target="_blank">
             <FaGithub className="my-3 mr-3 text-blue-300" size="28" />
           </Link>
         </div>
