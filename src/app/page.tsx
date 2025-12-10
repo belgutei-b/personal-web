@@ -1,20 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-// https://github.com/tsparticles/react/#readme
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import {
-  type Container,
-  type ISourceOptions,
-  MoveDirection,
-  OutMode,
-} from "@tsparticles/engine";
-// import { loadAll } from "@tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
-// import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
-import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-// import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
-
-import { particlesOptions } from "@/lib/particlesOptions";
 
 const texts = [
   {
@@ -59,51 +45,22 @@ const listItems = texts.map((text) => (
 ));
 
 export default function Home() {
-  const [init, setInit] = useState(false);
-  // this should be run only once per application lifetime
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
-      await loadSlim(engine);
-      //await loadBasic(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
-
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
-
-  const options: ISourceOptions = useMemo(() => particlesOptions, []);
-  if (init) {
-    return (
-      <div className="mt-14 relative">
-        <Particles
-          id="tsparticles"
-          particlesLoaded={particlesLoaded}
-          options={options}
-          className="absolute inset-0 z-0"
-        />
-        <div className="px-4 md:px-0 mt-20 md:mt-0 mb-12 tracking-tighter leading-relaxed hover:cursor-default">
-          <div className="flex font-medium text-xl md:text-2xl mb-4">
-            <p>printf(&quot;</p>
-            <p className="text-pink-500">Hello World!</p>
-            <p>&quot;). I&apos;m</p>
-          </div>
-          <div className="text-5xl font-semibold flex flex-row">
-            <div className="text-3xl md:text-5xl lg:text-6xl title-spacing">
-              Belgutei Byambadorj<span className="text-pink-500 inline">.</span>
-            </div>
+  return (
+    <div className="mt-14 relative">
+     <div className="px-4 md:px-0 mt-20 md:mt-0 mb-12 tracking-tighter leading-relaxed hover:cursor-default">
+        <div className="flex font-medium text-xl md:text-2xl mb-4">
+          <p>printf(&quot;</p>
+          <p className="text-pink-500">Hello World!</p>
+          <p>&quot;). I&apos;m</p>
+        </div>
+        <div className="text-5xl font-semibold flex flex-row">
+          <div className="text-3xl md:text-5xl lg:text-6xl title-spacing">
+            Belgutei Byambadorj<span className="text-pink-500 inline">.</span>
           </div>
         </div>
-        <div className="px-4 md:px-0">{listItems}</div>
       </div>
-    );
-  }
-  return <div>Loading</div>;
+      <div className="px-4 md:px-0">{listItems}</div>
+    </div>
+  );
 }
+
